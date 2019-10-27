@@ -106,5 +106,27 @@ namespace PacManSimulatorUnitTests
         }
 
 
+
+        [TestMethod]
+        public void CheckWithInvaliedCommand()
+        {
+            int horizontalCordinate = 2;
+            int verticalCordinate = 2;
+            string faceDirectionInput = "NORTH";
+            List<string> commands = new List<string>();
+            commands.Add("MOVE");
+            commands.Add("MOVd");
+            commands.Add("MOVE");
+            ReportOutPutEntity report = new ReportOutPutEntity();
+            PacManMovementService service = new PacManMovementService();
+            string actualResponceMessage = "Command is not in Correct Format";
+            report = service.ProduceReport(horizontalCordinate, verticalCordinate, faceDirectionInput, commands);
+            Assert.AreEqual(report.responceMessage, actualResponceMessage);
+
+
+
+        }
+
+
     }
 }
